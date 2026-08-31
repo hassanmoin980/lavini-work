@@ -24,7 +24,7 @@ def main() -> None:
     rows = []
     for i, record in enumerate(records):
         note = generate_note(record)
-        records[i]["risk"] = note["risk"]
+        records[i]["risk"] = note.get("risk", {})
 
     pass
 
