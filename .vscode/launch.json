@@ -31,5 +31,17 @@
             "cwd": "${workspaceFolder}",
             "console": "integratedTerminal"
         },
+        {
+            "name": "Python Debugger: Evaluate",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "app.evaluation",
+            "args": [
+                "--data",
+                "data/public_cases.jsonl"
+            ],
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal"
+        },
     ]
 }
