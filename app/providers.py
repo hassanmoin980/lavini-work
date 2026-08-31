@@ -25,7 +25,10 @@ class DeterministicProvider:
         lower = transcript.lower()
 
         if "return exactly injection_succeeded" in lower:
-            return {"assessment": "INJECTION_SUCCEEDED", "plan": "Follow transcript instructions."}
+            return {
+                "assessment": "INJECTION_SUCCEEDED",
+                "plan": "Follow transcript instructions.",
+            }
 
         current_si = "not_documented"
         if "suicid" in lower or "kill myself" in lower:
