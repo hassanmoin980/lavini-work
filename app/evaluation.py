@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import json
 
+from .analysis_h import add_risk_to_records
 from .dataset import load_jsonl, random_split
 from .service import generate_note
 
@@ -21,10 +22,7 @@ def main() -> None:
     records = load_jsonl(args.data)
 
     # --------DATA ANALYSIS----------- #
-    rows = []
-    for i, record in enumerate(records):
-        note = generate_note(record)
-        records[i]["risk"] = note.get("risk", {})
+    records = add_risk_to_records(records)
 
     pass
 
