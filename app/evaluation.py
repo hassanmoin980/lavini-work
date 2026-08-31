@@ -19,12 +19,34 @@ def main() -> None:
     parser.add_argument("--data", required=True)
     args = parser.parse_args()
     records = load_jsonl(args.data)
+
+    # --------DATA ANALYSIS----------- #
+    rows = []
+    for i, record in enumerate(records):
+        note = generate_note(record)
+        records[i]["risk"] = note["risk"]
+
+    pass
+
+    # -------------------------------- #
+
     _, evaluation_records = random_split(records)
     rows = []
     for record in evaluation_records:
         note = generate_note(record)
-        rows.append({"case_id": record.get("case_id"), "quality_score": score_note(record["transcript"], note)})
-    result = {"evaluated": len(rows), "average_quality": round(sum(r["quality_score"] for r in rows) / max(1, len(rows)), 3), "cases": rows}
+        rows.append(
+            {
+                "case_id": record.get("case_id"),
+                "quality_score": score_note(record["transcript"], note),
+            }
+        )
+    result = {
+        "evaluated": len(rows),
+        "average_quality": round(
+            sum(r["quality_score"] for r in rows) / max(1, len(rows)), 3
+        ),
+        "cases": rows,
+    }
     print(json.dumps(result, indent=2))
 
 
