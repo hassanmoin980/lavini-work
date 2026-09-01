@@ -61,4 +61,13 @@ if __name__ == "__main__":
     distribution(rows, 1)
     distribution(rows, 2)
 
+    for field in FIELDS:
+        TP = 0
+        for _, expected, actual in rows:
+            want = expected.get(field)
+            got = clean(actual.get(field) if isinstance(actual, dict) else None)
+
+            if want == got:
+                TP += 1
+
     pass
