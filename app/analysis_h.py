@@ -61,13 +61,26 @@ if __name__ == "__main__":
     distribution(rows, 1)
     distribution(rows, 2)
 
-    for field in FIELDS:
-        TP = 0
-        for _, expected, actual in rows:
-            want = expected.get(field)
-            got = clean(actual.get(field) if isinstance(actual, dict) else None)
+    for value in VALUES:
+        for field in FIELDS:
+            TP = value_total = value_found = FP = 0
+            for _, expected, actual in rows:
+                want = expected.get(field)
+                got = clean(actual.get(field) if isinstance(actual, dict) else None)
 
-            if want == got:
-                TP += 1
+                if want == got:
+                    TP += 1
+                if want == f"{value}":
+                    value_total += 1
+                    if got == f"{value}":
+                        value_found += 1
+                elif got == f"{value}":
+                    FP += 1
+
+            recall = f"{value_found}/{value_total}" if value_total else "n/a"
+            print(
+                f"\n {value:<30} {field:<30} correct={TP}/{len(rows)}  "
+                f"found_{value}={recall}  false_positives={FP}"
+            )
 
     pass
