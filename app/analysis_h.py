@@ -1,3 +1,5 @@
+import json
+
 from .dataset import load_jsonl
 from .service import generate_note
 
@@ -20,4 +22,14 @@ def add_risk_to_records(records):
 
 if __name__ == "__main__":
     records = load_jsonl(path=r".\data\public_cases.jsonl")
+    records = add_risk_to_records(records)
+    rows = []
+    for record in records:
+        rows.append(
+            (
+                record.get("case_id"),
+                record.get("reference_labels"),
+                record.get("risk", {}),
+            )
+        )
     pass
