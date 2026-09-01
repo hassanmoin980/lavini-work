@@ -1,6 +1,15 @@
 from .dataset import load_jsonl
 from .service import generate_note
 
+FIELDS = [
+    "current_suicidal_ideation",
+    "historical_suicidal_ideation",
+    "self_harm",
+    "harm_to_others",
+]
+
+VALUES = ["present", "denied", "unclear", "not_documented"]
+
 
 def add_risk_to_records(records):
     for i, record in enumerate(records):
