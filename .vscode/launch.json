@@ -43,5 +43,13 @@
             "cwd": "${workspaceFolder}",
             "console": "integratedTerminal"
         },
+        {
+            "name": "Python Debugger: Analyze",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "app.analysis_h",
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal"
+        },
     ]
 }
