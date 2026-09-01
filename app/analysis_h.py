@@ -20,9 +20,7 @@ def add_risk_to_records(records):
     return records
 
 
-if __name__ == "__main__":
-    records = load_jsonl(path=r".\data\public_cases.jsonl")
-    records = add_risk_to_records(records)
+def collect(records):
     rows = []
     for record in records:
         rows.append(
@@ -32,4 +30,11 @@ if __name__ == "__main__":
                 record.get("risk", {}),
             )
         )
+    return rows
+
+
+if __name__ == "__main__":
+    records = load_jsonl(path=r".\data\public_cases.jsonl")
+    records = add_risk_to_records(records)
+    rows = collect(records)
     pass
