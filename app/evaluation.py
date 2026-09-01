@@ -23,6 +23,8 @@ def main() -> None:
 
     # --------DATA ANALYSIS----------- #
     records = add_risk_to_records(records)
+    for i, record in enumerate(records):
+        pass
 
     pass
 
