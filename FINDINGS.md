@@ -21,7 +21,14 @@
 ---
 - Finding #4: Full transcript is being logged.
 - Severity: Critical
-- Evidence: LOGGER.info("Generating note encounter=%s transcript=%s", encounter_id, transcript) --> app/service.py:25
+- Evidence: app/service.py:25 ---> LOGGER.info("Generating note encounter=%s transcript=%s", encounter_id, transcript)
 - Potential Consequence: PUB-006 contains SSN and phone number, which is a violation of HIPAA. Logging the entire transcript may cause data leakage.
+- Proposed Remediation: TBD
+- Fixed: TBD
+---
+- Finding #5: requires_human_review is hardcoded as False.
+- Severity: High
+- Evidence: app/providers.py:53 ---> in 'risk' key, "requires_human_review": False is set. Nothing in the code changes the value.
+- Potential Consequence: No human-in-the-loop. May pass hallucinating/unsafe responses. 
 - Proposed Remediation: TBD
 - Fixed: TBD
