@@ -8,3 +8,4 @@ evaluation-results.json
 dataset-audit.json
 *.log
 .DS_Store
+experiments/
