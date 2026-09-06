@@ -11,3 +11,17 @@
 - Potential Consequence: PHI information may be revealed, which is a violation of HIPAA.
 - Proposed Remediation: TBD
 - Fixed: TBD
+---
+- Finding #3: Active suicidal indication reported as not_documented in PUB-011.
+- Severity: Critical
+- Evidence: The code checks for "suicid" or "kill myself" in lower case, while PUB-011 contains the phrase "killing myself".
+- Potential Consequence: A doctor reviewing the notes may overlook this patient note, as the failure is silent. No warning, no flag, no degraded confidence signal, which may contribute to patient death.
+- Proposed Remediation: TBD
+- Fixed: TBD
+---
+- Finding #4: Full transcript is being logged.
+- Severity: Critical
+- Evidence: LOGGER.info("Generating note encounter=%s transcript=%s", encounter_id, transcript) --> app/service.py:25
+- Potential Consequence: PUB-006 contains SSN and phone number, which is a violation of HIPAA. This action may cause data leakage.
+- Proposed Remediation: TBD
+- Fixed: TBD
