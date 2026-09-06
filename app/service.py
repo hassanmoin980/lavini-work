@@ -35,7 +35,7 @@ def generate_note(payload: dict[str, Any]) -> dict[str, Any]:
     transcript = payload["transcript"]
     intake = payload.get("intake") or {}
 
-    LOGGER.info("Generating note encounter=%s transcript=%s", encounter_id, transcript)
+    LOGGER.info("Generating note encounter=%s", encounter_id)
     provider = choose_provider(transcript)
     result = provider.generate(transcript, intake)
     result["model_used"] = provider.name

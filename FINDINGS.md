@@ -23,8 +23,8 @@
 - Severity: Critical
 - Evidence: app/service.py:25 ---> LOGGER.info("Generating note encounter=%s transcript=%s", encounter_id, transcript)
 - Potential Consequence: PUB-006 contains SSN and phone number, which is a violation of HIPAA. Logging the entire transcript may cause data leakage.
-- Proposed Remediation: TBD
-- Fixed: TBD
+- Proposed Remediation: Removed transcription from being logged.
+- Fixed: Done
 ---
 - Finding #5: requires_human_review is hardcoded as False.
 - Severity: High
@@ -65,8 +65,8 @@
 - Severity: High
 - Evidence: app/service.py:16 ---> The divisor is a thousand while the rate is per million.
 - Potential Consequence: Unwanted increase in the budget. 
-- Proposed Remediation: TBD
-- Fixed: TBD
+- Proposed Remediation: Convert 1_000 to 1_000_000
+- Fixed: Yes
 ---
 - Finding #11: No fallbacks, retries, or timeouts when calling the provider.
 - Severity: High
