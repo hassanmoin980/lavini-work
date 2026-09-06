@@ -46,3 +46,38 @@
 - Potential Consequence: Clinician reviewing the case may have to manually look through the case notes in order to find evidence of the risk, increasing time to evaluate a case. 
 - Proposed Remediation: TBD
 - Fixed: TBD
+---
+- Finding #8: Uncertainty/warnings are always empty.
+- Severity: High
+- Evidence: app/providers.py:55-56 ---> "unsupported_or_uncertain_items": []; "warnings": []
+- Potential Consequence: May manufacture false/incorrect content confidently. 
+- Proposed Remediation: TBD
+- Fixed: TBD
+---
+- Finding #9: Evaluation metric rewards verbatim copying, therefore rewards PHI leakage.
+- Severity: High
+- Evidence: app/evaluation.py:11-15 ---> scores a note by the fraction of transcript words that appear anywhere in str(note)
+- Potential Consequence: Uninformative metric when it comes to detecting PHI leakages. 
+- Proposed Remediation: TBD
+- Fixed: TBD
+---
+- Finding #10: Cost estimate is wrong by a factor of 1000
+- Severity: High
+- Evidence: app/service.py:16 ---> The divisor is a thousand while the rate is per million.
+- Potential Consequence: Unwanted increase in the budget. 
+- Proposed Remediation: TBD
+- Fixed: TBD
+---
+- Finding #11: No fallbacks, retries, or timeouts when calling the provider.
+- Severity: High
+- Evidence: app/service.py:27 ---> provider.generate().
+- Potential Consequence: May block a thread, causing unwanted delays/crashes. 
+- Proposed Remediation: TBD
+- Fixed: TBD
+---
+- Finding #12: Duplicate data.
+- Severity: Medium
+- Evidence: PUB-002 an 007 have the same data.
+- Potential Consequence: May cause issue in training a model (redundant data/may cause overfitting in such a small dataset). 
+- Proposed Remediation: TBD
+- Fixed: TBD
