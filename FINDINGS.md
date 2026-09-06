@@ -30,8 +30,8 @@
 - Severity: High
 - Evidence: app/providers.py:53 ---> in 'risk' key, "requires_human_review": False is set. Nothing in the code changes the value.
 - Potential Consequence: No human-in-the-loop. May pass hallucinating/unsafe responses. 
-- Proposed Remediation: TBD
-- Fixed: TBD
+- Proposed Remediation: Asserted risk must carry a review flag. Added in schema validation.
+- Fixed: Yes
 ---
 - Finding #6: 3 of the 4 risk fields are hard-coded as not_documented.
 - Severity: High
@@ -44,8 +44,8 @@
 - Severity: High
 - Evidence: app/providers.py:52 ---> "supporting_evidence": []
 - Potential Consequence: Clinician reviewing the case may have to manually look through the case notes in order to find evidence of the risk, increasing time to evaluate a case. 
-- Proposed Remediation: TBD
-- Fixed: TBD
+- Proposed Remediation: Asserted to check for evidence if there is any risk involved.
+- Fixed: Yes
 ---
 - Finding #8: Uncertainty/warnings are always empty.
 - Severity: High

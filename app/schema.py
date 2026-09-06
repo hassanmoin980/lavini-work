@@ -41,3 +41,16 @@ def validate(note: dict, transcript: str) -> None:
     for field in RISK_FIELDS:
         if note["risk"].get(field) not in VALUES:
             raise InvalidNote(f"bad value for {field}: {note['risk'].get(field)!r}")
+
+    asserted = any(note["risk"].get(f) in {"present", "unclear"} for f in RISK_FIELDS)
+    evidence = note["risk"].get("supporting_evidence") or []
+
+    if asserted and not evidence:
+        raise InvalidNote("risk asserted without supporting evidence")
+
+    for span in evidence:
+        if span.get("quote", "") not in transcript:
+            raise InvalidNote("supporting evidence is not in the transcript")
+
+    if asserted and note["risk"].get("requires_human_review") is not True:
+        raise InvalidNote("risk asserted but human review not required.")
