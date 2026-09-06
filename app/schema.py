@@ -34,3 +34,10 @@ def validate(note: dict, transcript: str) -> None:
     for field in TOP_FIELDS:
         if field not in note:
             raise InvalidNote(f"missing field: {field}")
+
+    if not isinstance(note["risk"], dict):
+        raise InvalidNote("risk is not an object")
+
+    for field in RISK_FIELDS:
+        if note["risk"].get(field) not in VALUES:
+            raise InvalidNote(f"bad value for {field}: {note['risk'].get(field)!r}")
