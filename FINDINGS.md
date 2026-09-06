@@ -32,3 +32,10 @@
 - Potential Consequence: No human-in-the-loop. May pass hallucinating/unsafe responses. 
 - Proposed Remediation: TBD
 - Fixed: TBD
+---
+- Finding #6: 3 of the 4 risk fields are hard-coded as not_documented.
+- Severity: High
+- Evidence: app/providers.py:49-51 ---> in 'risk' key has three fields that are decorative.
+- Potential Consequence: May misguide clinicians/reviewers. 
+- Proposed Remediation: TBD
+- Fixed: TBD
