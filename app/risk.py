@@ -106,3 +106,5 @@ if __name__ == "__main__":
         _clauses("my name is hassan, but i am an Sr AI dev, although i did engineering")
     )
     print(_has("my name is hassan, I work as a developer", ["dev"]))
+    print(assess("I am going to kill myself today"))
+    print(assess("I am not going to kill myself today"))
