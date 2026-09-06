@@ -22,6 +22,6 @@
 - Finding #4: Full transcript is being logged.
 - Severity: Critical
 - Evidence: LOGGER.info("Generating note encounter=%s transcript=%s", encounter_id, transcript) --> app/service.py:25
-- Potential Consequence: PUB-006 contains SSN and phone number, which is a violation of HIPAA. This action may cause data leakage.
+- Potential Consequence: PUB-006 contains SSN and phone number, which is a violation of HIPAA. Logging the entire transcript may cause data leakage.
 - Proposed Remediation: TBD
 - Fixed: TBD
