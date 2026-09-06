@@ -35,7 +35,14 @@
 ---
 - Finding #6: 3 of the 4 risk fields are hard-coded as not_documented.
 - Severity: High
-- Evidence: app/providers.py:49-51 ---> in 'risk' key has three fields that are decorative.
+- Evidence: app/providers.py:49-51 ---> 'risk' key has three fields that are decorative.
 - Potential Consequence: May misguide clinicians/reviewers. 
+- Proposed Remediation: TBD
+- Fixed: TBD
+---
+- Finding #7: supporting_evidence always empty.
+- Severity: High
+- Evidence: app/providers.py:52 ---> "supporting_evidence": []
+- Potential Consequence: Clinician reviewing the case may have to manually look through the case notes in order to find evidence of the risk, increasing time to evaluate a case. 
 - Proposed Remediation: TBD
 - Fixed: TBD
