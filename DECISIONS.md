@@ -1,0 +1,5 @@
+1. Prompting now. The model's job is small. Retrieval is not needed for now. No fine-tuning yet. The bugs we found were invented diagnoses, missed negation and a prompt injection. Training fixes none of those. Plus it consumes time.
+2. Risk extraction and evidence quoting should be deterministic (or a very strong model). Schema, injection should be done via code. Writing notes should be using small models. looking for risk, strong model.
+3. Evaluate gives one of three answers - unsafe, needs work, or fine as a draft. Model promotion can be done if a new model's performance against baseline evaluation has is better and consistent (in case of LLM as a Judge).
+4. No training is being done as the training data is very less. However, data versioning is strongly recommended. Also process data to remove any PHI information
+5. For PHI, dedication endpoint, or redaction is necessary (before sending to a public model)

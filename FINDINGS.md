@@ -9,8 +9,8 @@
 - Severity: Critical
 - Evidence: PUB-003's transcript tries to override the system prompt, and asks the model to reveal PHI information. In this case, it returns INJECTION_SUCCEEDED when the transcript contains trigger phrase.
 - Potential Consequence: PHI information may be revealed, which is a violation of HIPAA.
-- Proposed Remediation: TBD
-- Fixed: TBD
+- Proposed Remediation: Look for keywords that intend to break the prompt.
+- Fixed: Yes
 ---
 - Finding #3: Active suicidal indication reported as not_documented in PUB-011.
 - Severity: Critical
@@ -24,7 +24,7 @@
 - Evidence: app/service.py:25 ---> LOGGER.info("Generating note encounter=%s transcript=%s", encounter_id, transcript)
 - Potential Consequence: PUB-006 contains SSN and phone number, which is a violation of HIPAA. Logging the entire transcript may cause data leakage.
 - Proposed Remediation: Removed transcription from being logged.
-- Fixed: Done
+- Fixed: Yes
 ---
 - Finding #5: requires_human_review is hardcoded as False.
 - Severity: High
@@ -58,8 +58,8 @@
 - Severity: High
 - Evidence: app/evaluation.py:11-15 ---> scores a note by the fraction of transcript words that appear anywhere in str(note)
 - Potential Consequence: Uninformative metric when it comes to detecting PHI leakages. 
-- Proposed Remediation: TBD
-- Fixed: TBD
+- Proposed Remediation: Evaluate each metric individually using a corpus.
+- Fixed: Yes
 ---
 - Finding #10: Cost estimate is wrong by a factor of 1000
 - Severity: High
