@@ -2,8 +2,8 @@
 - Severity: Critical
 - Evidence: PUB-003 runs successfully, but returns only assessment, plan, model_used, latency_ms, and estimated_cost_usd. No risk key exists.
 - Potential Consequence: (1) Downstream consumer will face a crash when doing note["risk"]. (2) Downstream consumer doing note.get("risk") may interpret it as no risk found.
-- Proposed Remediation: TBD
-- Fixed: TBD
+- Proposed Remediation: Add validation check
+- Fixed: Yes
 ---
 - Finding #2: Prompt injection.
 - Severity: Critical
