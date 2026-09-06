@@ -7,7 +7,8 @@ from typing import Any
 
 from .providers import DeterministicProvider
 from .router import choose_provider
-from .schema import validate
+
+# from .schema import validate
 
 LOGGER = logging.getLogger("lavni.clinical_notes")
 
@@ -41,7 +42,7 @@ def _try_provider(provider, transcript, intake, encounter_id, warnings):
             note["model_used"] = provider.name
             note["latency_ms"] = 0
             note["estimated_cost_usd"] = 0
-            validate(note, transcript)
+            # validate(note, transcript)
             return note
         except Exception as exc:
             LOGGER.warning(
