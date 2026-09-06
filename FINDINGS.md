@@ -51,8 +51,8 @@
 - Severity: High
 - Evidence: app/providers.py:55-56 ---> "unsupported_or_uncertain_items": []; "warnings": []
 - Potential Consequence: May manufacture false/incorrect content confidently. 
-- Proposed Remediation: TBD
-- Fixed: TBD
+- Proposed Remediation: Populate the key with every clinical element the model cannot ground, especially if unclear.
+- Fixed: Yes
 ---
 - Finding #9: Evaluation metric rewards verbatim copying, therefore rewards PHI leakage.
 - Severity: High
