@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+# PyDantic?
+
 VALUES = {"present", "denied", "unclear", "not_documented"}
 RISK_FIELDS = (
     "current_suicidal_ideation",
@@ -21,5 +23,14 @@ TOP_FIELDS = (
 )
 
 
-def validate(note: dict, transcript: str) -> None:
+class InvalidNote(Exception):
     pass
+
+
+def validate(note: dict, transcript: str) -> None:
+    if not isinstance(note, dict):
+        raise InvalidNote("note is not an object")
+
+    for field in TOP_FIELDS:
+        if field not in note:
+            raise InvalidNote(f"missing field: {field}")
