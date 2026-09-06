@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import re
+import typing
 
 TERMS = {
     "suicidal_ideation": [
@@ -52,6 +53,51 @@ def _clauses(sentence: str) -> list[str]:
 def _has(clause: str, words: list[str]) -> bool:
     padded = f" {clause.lower()} "
     return any(word in padded for word in words)
+
+
+def _worst(values: list[str]) -> str:
+    for level in PRECEDENCE:
+        if level in values:
+            return level
+    return "not_documented"
+
+
+def assess(transcript: str) -> typing.Tuple[dict, list[dict]]:
+    current, historical, harm, others = [], [], [], []
+    evidence: list[dict] = []
+    for sentence in _sentences(transcript):
+        for clause in _clauses(sentence):
+            for dim, terms in TERMS.items():
+                if not _has(clause, terms):
+                    continue
+
+                negated = _has(clause, NEGATION)
+                past = _has(clause, PAST)
+                now = _has(clause, NOW)
+                evidence.append({"dimension": dim, "quote": sentence})
+
+                if dim == "self_harm":
+                    harm.append("denied" if negated else "present")
+                elif dim == "harm_to_others":
+                    others.append("denied" if negated else "present")
+                elif negated and past:
+                    current.append("denied")
+                    historical.append("present")
+                elif negated:
+                    current.append("denied")
+                elif past:
+                    historical.append("present")
+                elif now:
+                    current.append("present")
+                else:
+                    current.append("unclear")
+
+    return {
+        "current_suicidal_ideation": _worst(current),
+        "historical_suicidal_ideation": _worst(historical),
+        "self_harm": _worst(harm),
+        "harm_to_others": _worst(others),
+    }, evidence
 
 
 if __name__ == "__main__":

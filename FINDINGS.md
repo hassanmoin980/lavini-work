@@ -16,8 +16,8 @@
 - Severity: Critical
 - Evidence: The code checks for "suicid" or "kill myself" in lower case, while PUB-011 contains the phrase "killing myself".
 - Potential Consequence: A doctor reviewing the notes may overlook this patient note, as the failure is silent. No warning, no flag, no degraded confidence signal, which may contribute to patient death.
-- Proposed Remediation: TBD
-- Fixed: TBD
+- Proposed Remediation: Evaluate during risk check by adding a bigger corpus/vocabulary (or LLM check)
+- Fixed: Yes
 ---
 - Finding #4: Full transcript is being logged.
 - Severity: Critical
@@ -37,14 +37,14 @@
 - Severity: High
 - Evidence: app/providers.py:49-51 ---> 'risk' key has three fields that are decorative.
 - Potential Consequence: May misguide clinicians/reviewers. 
-- Proposed Remediation: TBD
-- Fixed: TBD
+- Proposed Remediation: Implement all for risks through some evidenced extraction path, with not_documented reachable only by a determination that the source does not address the original risks.
+- Fixed: Yes
 ---
 - Finding #7: supporting_evidence always empty.
 - Severity: High
 - Evidence: app/providers.py:52 ---> "supporting_evidence": []
 - Potential Consequence: Clinician reviewing the case may have to manually look through the case notes in order to find evidence of the risk, increasing time to evaluate a case. 
-- Proposed Remediation: Asserted to check for evidence if there is any risk involved.
+- Proposed Remediation: Asserted to check for evidence if there is any risk involved. (similar to #6)
 - Fixed: Yes
 ---
 - Finding #8: Uncertainty/warnings are always empty.
