@@ -11,7 +11,6 @@ from .schema import validate
 
 LOGGER = logging.getLogger("lavni.clinical_notes")
 
-TIMEOUT_SECONDS = 8.0
 ATTEMPTS_PER_PROVIDER = 2
 
 INJECTION_SIGNS = [
@@ -25,10 +24,14 @@ INJECTION_SIGNS = [
 ]
 
 
-def _provider_chain(transcript: str) -> list[Any]:
-    primary = choose_provider(transcript)
-    fallback = DeterministicProvider()
-    return [primary] if primary.name == fallback.name else [primary, fallback]
+class AllProvidersFailed(Exception):
+    pass
+
+
+# def _provider_chain(transcript: str) -> list[Any]:
+#     primary = choose_provider(transcript)
+#     fallback = DeterministicProvider()
+#     return [primary] if primary.name == fallback.name else [primary, fallback]
 
 
 # def _try_provider(provider, transcript, intake, encounter_id, warnings):
