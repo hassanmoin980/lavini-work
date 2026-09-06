@@ -72,8 +72,8 @@
 - Severity: High
 - Evidence: app/service.py:27 ---> provider.generate().
 - Potential Consequence: May block a thread, causing unwanted delays/crashes. 
-- Proposed Remediation: TBD
-- Fixed: TBD
+- Proposed Remediation: Handle gracefull fallback/error handling during provider calling
+- Fixed: Yes
 ---
 - Finding #12: Duplicate data.
 - Severity: Medium
