@@ -36,6 +36,11 @@ def generate_note(payload: dict[str, Any]) -> dict[str, Any]:
     intake = payload.get("intake") or {}
 
     LOGGER.info("Generating note encounter=%s", encounter_id)
+
+    warnings: list[str] = []
+    if any(sign in transcript.lower() for sign in INJECTION_SIGNS):
+        warnings.append("Transcript contains instruction-like text.")
+
     provider = choose_provider(transcript)
     result = provider.generate(transcript, intake)
     result["model_used"] = provider.name
