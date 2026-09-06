@@ -3,7 +3,6 @@ from __future__ import annotations
 import json
 import logging
 import os
-import uuid
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 
 from .service import generate_note
@@ -11,10 +10,6 @@ from .service import generate_note
 logging.basicConfig(
     level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s %(message)s"
 )
-
-LOGGER = logging.getLogger("lavni.http")
-
-MAX_BODY_BYTES = 1000000
 
 
 class Handler(BaseHTTPRequestHandler):
@@ -25,9 +20,6 @@ class Handler(BaseHTTPRequestHandler):
         self.send_header("Content-Length", str(len(encoded)))
         self.end_headers()
         self.wfile.write(encoded)
-
-    def _fail():
-        pass
 
     def do_GET(self) -> None:  # noqa: N802
         if self.path == "/health":
