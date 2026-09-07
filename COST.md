@@ -46,5 +46,5 @@ $2000/mo ---> 12345679
 LLM as a Judge, hosting costs, fine-tuning costs (if needed)
 
 # Latency
-- Serial 8B via the router: ~2.0s.
+- Currently serial implementation of 8B via the router takes ~2.0s.
 - Assuming 25% of traffic goes to the 70B, which is slower. p95 is set by that path.
