@@ -79,5 +79,5 @@
 - Severity: Medium
 - Evidence: PUB-002 an 007 have the same data.
 - Potential Consequence: May cause issue in training a model (redundant data/may cause overfitting in such a small dataset). 
-- Proposed Remediation: TBD
-- Fixed: TBD
+- Proposed Remediation: Remove it whenever fine tuning / training a model.
+- Fixed: Yes

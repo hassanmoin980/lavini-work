@@ -247,3 +247,6 @@ curl -s http://127.0.0.1:8080/v1/clinical-notes \
   -H 'Content-Type: application/json' \
   -d '{"encounter_id":"demo-1","transcript":"The synthetic patient reports sleeping poorly and denies current suicidal thoughts.","intake":{},"note_format":"structured"}'
 ```
+
+Approximate Time Spent: ~5.25 hours averaged out
+Use of AI tools: AI tools were used for ideation, quick code implementation, understanding the repo and generating notes. It was also used to generate this README.md file. The tools were used as a companion in helping me to debug, evaluate and solve this problem.
